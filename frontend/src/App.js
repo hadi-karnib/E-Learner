@@ -1,21 +1,29 @@
 import "./App.css";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  Outlet,
+  RouterProvider,
+} from "react-router-dom";
+import Login from "./pages/login/login";
+import Register from "./pages/register/register";
+import { ToastContainer } from "react-toastify";
 
 function App() {
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <>
+        <Route path="/" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+      </>
+    )
+  );
+
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ToastContainer position="top-right"></ToastContainer>
+      <RouterProvider router={router} />
     </div>
   );
 }
