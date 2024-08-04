@@ -1,7 +1,6 @@
 import Class from "../models/Class.js";
 import User from "../models/User.js";
 
-// Create a new class
 export const createClass = async (req, res) => {
   const { title, description, instructor } = req.body;
 
@@ -24,7 +23,6 @@ export const createClass = async (req, res) => {
   }
 };
 
-// Get all classes
 export const getClasses = async (req, res) => {
   try {
     const classes = await Class.find().populate("instructor", "name email");
@@ -34,7 +32,6 @@ export const getClasses = async (req, res) => {
   }
 };
 
-// Get all classes for the logged-in instructor
 export const getClassesByInstructor = async (req, res) => {
   try {
     const classes = await Class.find({ instructor: req.user._id }).populate(
@@ -47,7 +44,6 @@ export const getClassesByInstructor = async (req, res) => {
   }
 };
 
-// Get a single class by ID
 export const getClassById = async (req, res) => {
   const { id } = req.params;
 
@@ -66,7 +62,6 @@ export const getClassById = async (req, res) => {
   }
 };
 
-// Update a class
 export const updateClass = async (req, res) => {
   const { id } = req.params;
   const { title, description, instructor } = req.body;
