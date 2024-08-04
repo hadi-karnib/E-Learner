@@ -31,6 +31,7 @@ const UserSchema = new Schema(
         /^(01|03|70|71|76|78|79|81)\d{6}$/,
         "Please enter a valid Lebanese phone number",
       ],
+      unique: true,
     },
     role: {
       type: String,
