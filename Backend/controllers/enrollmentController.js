@@ -2,7 +2,6 @@ import Enrollment from "../models/Enrollment.js";
 import User from "../models/User.js";
 import Class from "../models/Class.js";
 
-// Create a new enrollment
 export const createEnrollment = async (req, res) => {
   const { student, class: classId } = req.body;
 
@@ -29,7 +28,6 @@ export const createEnrollment = async (req, res) => {
   }
 };
 
-// Get all enrollments
 export const getEnrollments = async (req, res) => {
   try {
     const enrollments = await Enrollment.find()
@@ -41,7 +39,6 @@ export const getEnrollments = async (req, res) => {
   }
 };
 
-// Get enrollments by student ID
 export const getEnrollmentsByStudent = async (req, res) => {
   const { studentId } = req.params;
 
@@ -55,7 +52,6 @@ export const getEnrollmentsByStudent = async (req, res) => {
   }
 };
 
-// Delete an enrollment
 export const deleteEnrollment = async (req, res) => {
   const { id } = req.params;
 
