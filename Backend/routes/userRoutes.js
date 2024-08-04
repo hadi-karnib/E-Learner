@@ -6,14 +6,14 @@ import {
   getUser,
   loginUser,
 } from "../controllers/userController.js";
-import { protect } from "../middleware/protectRoutes.js";
+import { adminProtect, protect } from "../middleware/protectRoutes.js";
 const router = express.Router();
 
 // Get all users
 router.get("/", protect, getUsers);
-router.get("/:id", getUser);
+router.get("/:id", protect, getUser);
 router.post("/", createUser);
 router.post("/login", loginUser);
-router.delete("/:id", deleteUser);
+router.delete("/:id", protect, adminProtect, deleteUser);
 
 export default router;
