@@ -1,20 +1,30 @@
 import React, { useState } from "react";
 import "./login.css";
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { login } from "../../store/auth/authActions";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle login logic
-    console.log("Email:", email);
-    console.log("Password:", password);
+    if (email === "" || password === "") {
+      toast.error("Please fill in all fields");
+      return;
+    } else {
+      dispatch(login({ email, password, navigate }));
+    }
   };
 
   return (
     <div className="login-container">
+      <ToastContainer position="top-right"></ToastContainer>
       <h1 className="login-header">Login</h1>
       <form onSubmit={handleSubmit}>
         <div className="login-input-group">
