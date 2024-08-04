@@ -4,11 +4,11 @@ import cors from "cors";
 import dotenv from "dotenv";
 import userRouter from "./routes/userRoutes.js"; // Ensure the path is correct
 import classRouter from "./routes/classRoutes.js";
-
+import enrollmentRouter from "./routes/enrollmentRoutes.js";
+import withdrawalRouter from "./routes/withdrawalRoutes.js";
 dotenv.config();
 
 const app = express();
-
 // Middleware
 app.use(express.json());
 app.use(
@@ -19,17 +19,16 @@ app.use(
   })
 );
 
-// Logger Middleware
 app.use((req, res, next) => {
   console.log(`${req.method} ${req.path}`);
   next();
 });
 
-// Routes
 app.use("/api/users", userRouter);
 app.use("/api/classes", classRouter);
+app.use("/api/enrollment", enrollmentRouter);
+app.use("/api/withdrawal", withdrawalRouter);
 
-// Connect to MongoDB and start server
 const PORT = process.env.PORT || 5000;
 mongoose
   .connect(process.env.MONGO_URI)
