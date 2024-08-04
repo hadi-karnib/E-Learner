@@ -9,7 +9,6 @@ import { protect, adminProtect } from "../middleware/protectRoutes.js";
 
 const router = express.Router();
 
-// Create a new enrollment
 router.post("/", protect, createEnrollment);
 
 // Get all enrollments
