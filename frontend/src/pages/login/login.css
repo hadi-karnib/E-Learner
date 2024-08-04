@@ -6,8 +6,8 @@ body {
     #b9f6ca
   ); /* Light green gradient */
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: center !important;
+  align-items: center !important;
   height: 100vh;
   margin: 0;
   animation: backgroundAnimation 10s infinite alternate;
@@ -20,6 +20,15 @@ body {
   100% {
     background: linear-gradient(135deg, #b9f6ca, #e0f7e9);
   }
+}
+
+.mainDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  animation: backgroundAnimation 10s infinite alternate;
 }
 
 .login-container {
