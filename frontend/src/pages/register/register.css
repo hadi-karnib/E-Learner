@@ -48,7 +48,7 @@ body {
 .register-header {
   color: #2e7d32; /* Dark green from the palette */
   margin-bottom: 20px;
-  font-size: 24px;
+  font-size: 30px;
   font-weight: bold;
 }
 
@@ -89,6 +89,18 @@ body {
   width: 100%; /* Set the button to take full width */
   font-size: 16px;
   transition: background-color 0.3s, transform 0.3s;
+}
+
+p {
+  color: #4caf50;
+}
+.link {
+  color: #a5d6a7;
+  text-decoration: underline;
+  transition: color 0.3s;
+}
+.link:hover {
+  color: #388e3c;
 }
 
 .register-button:hover {

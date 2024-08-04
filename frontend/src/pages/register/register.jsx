@@ -1,23 +1,30 @@
 import React, { useState } from "react";
 import "./register.css";
+import { Link, useNavigate } from "react-router-dom";
+import { signup } from "../../store/auth/authActions";
+import { useDispatch } from "react-redux";
+import { toast, ToastContainer } from "react-toastify";
 
 const Register = () => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const [phone_number, setPhoneNumber] = useState("");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle registration logic
-    console.log("Email:", email);
-    console.log("Username:", username);
-    console.log("Password:", password);
-    console.log("Phone Number:", phoneNumber);
+    if (email === "" || name === "" || phone_number === "" || password === "") {
+      toast.error("Please fill all the fields");
+    } else {
+      dispatch(signup({ name, email, password, phone_number, navigate }));
+    }
   };
 
   return (
     <div className="register-container">
+      <ToastContainer position="top-right"></ToastContainer>
       <h1 className="register-header">Register</h1>
       <form onSubmit={handleSubmit}>
         <div className="register-input-group">
@@ -37,8 +44,8 @@ const Register = () => {
             type="text"
             id="username"
             name="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
             required
           />
         </div>
@@ -54,13 +61,13 @@ const Register = () => {
           />
         </div>
         <div className="register-input-group">
-          <label htmlFor="phoneNumber">Phone Number</label>
+          <label htmlFor="phone_number">Phone Number</label>
           <input
             type="text"
-            id="phoneNumber"
-            name="phoneNumber"
-            value={phoneNumber}
-            placeholder="enter your number eg:03123123"
+            id="phone_number"
+            name="phone_number"
+            value={phone_number}
+            placeholder="Enter your number eg:03123123"
             onChange={(e) => setPhoneNumber(e.target.value)}
             required
           />
@@ -68,6 +75,12 @@ const Register = () => {
         <button className="register-button" type="submit">
           Register
         </button>
+        <p>
+          Already have an account?{" "}
+          <Link to="/" className="link">
+            Login Here
+          </Link>
+        </p>
       </form>
     </div>
   );
