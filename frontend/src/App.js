@@ -9,13 +9,15 @@ import {
 import Login from "./pages/login/login";
 import Register from "./pages/register/register";
 import { ToastContainer } from "react-toastify";
-
+import "react-toastify/dist/ReactToastify.css";
+import Home from "./pages/home/home";
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/home" element={<Home />} />
       </>
     )
   );
