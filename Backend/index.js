@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 import userRouter from "./routes/userRoutes.js"; // Ensure the path is correct
+import classRouter from "./routes/classRoutes.js";
 
 dotenv.config();
 
@@ -26,6 +27,7 @@ app.use((req, res, next) => {
 
 // Routes
 app.use("/api/users", userRouter);
+app.use("/api/classes", classRouter);
 
 // Connect to MongoDB and start server
 const PORT = process.env.PORT || 5000;
