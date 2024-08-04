@@ -30,7 +30,6 @@ export const createWithdrawal = async (req, res) => {
   }
 };
 
-// Get all withdrawal requests
 export const getWithdrawals = async (req, res) => {
   try {
     const withdrawals = await Withdrawal.find()
@@ -42,7 +41,6 @@ export const getWithdrawals = async (req, res) => {
   }
 };
 
-// Get withdrawal requests by student ID
 export const getWithdrawalsByStudent = async (req, res) => {
   const { studentId } = req.params;
 
@@ -56,7 +54,6 @@ export const getWithdrawalsByStudent = async (req, res) => {
   }
 };
 
-// Update the status of a withdrawal request
 export const updateWithdrawalStatus = async (req, res) => {
   const { id } = req.params;
   const { status } = req.body;
@@ -75,7 +72,6 @@ export const updateWithdrawalStatus = async (req, res) => {
   }
 };
 
-// Delete a withdrawal request
 export const deleteWithdrawal = async (req, res) => {
   const { id } = req.params;
 
