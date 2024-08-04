@@ -1,7 +1,6 @@
 import jwt from "jsonwebtoken";
 import User from "../models/User.js"; // Import User model to fetch user details
 
-// Middleware to check if the user is authenticated
 export const protect = async (req, res, next) => {
   let token;
 
@@ -21,6 +20,7 @@ export const protect = async (req, res, next) => {
     res.status(401).json({ message: "Not authorized, no token" });
   }
 };
+
 // Middleware to check if the user is an admin
 export const adminProtect = (req, res, next) => {
   if (req.user && req.user.role === "admin") {
